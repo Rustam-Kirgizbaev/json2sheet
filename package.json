@@ -1,0 +1,35 @@
+{
+  "name": "json2sheet",
+  "version": "1.0.1",
+  "description": "Utility package to convert json objects to excel sheets easily (based on exceljs)",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [
+    "json",
+    "excel",
+    "json-to-excel",
+    "excel-export",
+    "json-to-xlsx",
+    "xlsx",
+    "excel-buffer",
+    "excel-file",
+    "data-conversion",
+    "spreadsheet",
+    "excel-generator",
+    "typescript",
+    "csv-to-excel",
+    "export-to-excel"
+  ],
+  "author": "Rustamjon Kirgizbaev",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.14.2",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "exceljs": "^4.4.0"
+  }
+}
