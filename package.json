@@ -1,7 +1,15 @@
 {
   "name": "json2sheet",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Utility package to convert json objects to excel sheets easily (based on exceljs)",
+  "homepage": "https://github.com/Rustam-Kirgizbaev/json2sheet",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rustam-Kirgizbaev/json2sheet.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Rustam-Kirgizbaev/json2sheet/issues"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
