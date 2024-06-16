@@ -77,7 +77,7 @@ async function createExcelBuffer() {
     },
   ];
 
-  // jsonToBuffer is async function and returns Promise
+  // jsonToBuffer is an async function and returns Promise<Buffer>
   return await jsonToBuffer("sheetname", columns, data);
 }
 ```
@@ -150,7 +150,7 @@ async function createExcelBuffer() {
     },
   ];
 
-  // jsonToBuffer is async function and returns Promise
+  // jsonToFile is an async void function and it creates xlsx file.
   return await jsonToFile("filename.xlsx", "sheetname", columns, data);
 }
 ```

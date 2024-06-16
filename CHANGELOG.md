@@ -1,3 +1,7 @@
+# v1.0.3
+
+- Improved documentation
+
 # v1.0.2
 
 - Documentation is added
