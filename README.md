@@ -19,7 +19,7 @@ npm install json2sheet
 or
 
 ```bash
-yarn add mypackage
+yarn add json2sheet
 ```
 
 ## Usage
