@@ -1,8 +1,14 @@
 import { Workbook, Style } from "exceljs";
-import { Column } from "../interfaces/column";
+import { Column, Value } from "../interfaces/column";
 
-function getValue(obj: any, path: string): any {
-  return path.split(".").reduce((acc, part) => acc && acc[part], obj);
+function getValue(obj: any, value: Value): any {
+  if (typeof value === "string") {
+    return value.split(".").reduce((acc, part) => acc && acc[part], obj);
+  }
+
+  if (typeof value === "function") {
+    return value(obj);
+  }
 }
 
 export function jsonToExcelWorkbook(
@@ -29,7 +35,7 @@ export function jsonToExcelWorkbook(
   });
 
   data.forEach((row, rIndex) => {
-    values.forEach((value: string, cIndex: number) => {
+    values.forEach((value: Value, cIndex: number) => {
       const cell = sheet.getCell(rIndex + 2, cIndex + 1);
 
       cell.value = getValue(row, value);

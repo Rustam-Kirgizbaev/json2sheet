@@ -1,9 +1,11 @@
 import { Alignment } from "./alignment";
 import { Font } from "./font";
 
+export type Value = string | Function;
+
 export interface Column {
   label: string;
-  value: string;
+  value: Value;
   style?: ColumnStyle;
   width?: number;
 }

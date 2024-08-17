@@ -26,16 +26,38 @@ yarn add json2sheet
 
 There are two main functions you can use:
 
-1. Create Excel `file buffer` from json object:
+### File Buffer
+
+Create Excel `file buffer` from json object:
 
 ```javascript
-import { jsonToBuffer } from "json2sheet";
+import { jsonToBuffer, Column } from "json2sheet";
 
 async function createExcelBuffer() {
+  const data: any[] = [
+    {
+      name: "John Doe",
+      age: 24,
+      user: {
+        name: "johndoe",
+      },
+    },
+    {
+      name: "Doe John",
+      age: 42,
+      user: {
+        name: "doejohn",
+      },
+    },
+  ];
+
   const columns: Column[] = [
     {
       label: "User's name", // column name
-      value: "name", // property name
+      /*
+       * value is a property name or a function which takes single object as parameter and returns desired value
+       */
+      value: "name",
       width: 40, // column width
       style: {
         // column style
@@ -58,22 +80,10 @@ async function createExcelBuffer() {
       value: "user.name", // supports inner objects
       width: 20,
     },
-  ];
-
-  const data: any[] = [
     {
-      name: "John Doe",
-      age: 24,
-      user: {
-        name: "johndoe",
-      },
-    },
-    {
-      name: "Doe John",
-      age: 42,
-      user: {
-        name: "doejohn",
-      },
+      label: "Profile link",
+      value: (person) => `https://example.com/${person.user.name}`,
+      width: 20,
     },
   ];
 
@@ -98,10 +108,12 @@ res.set({
 res.send(buffer);
 ```
 
-2. Create `Excel file` itself:
+### Excel File
+
+Create `Excel file` itself:
 
 ```javascript
-import { jsonToFile } from "json2sheet";
+import { jsonToFile, Column } from "json2sheet";
 
 async function createExcelBuffer() {
   const columns: Column[] = [
@@ -156,6 +168,38 @@ async function createExcelBuffer() {
 ```
 
 `jsonToFile` is useful when you want to create Excel files in your local disk or on your your server.
+
+### Function Values
+
+Sometimes we need to modify the value from JSON a little bit as in the above example:
+
+```javascript
+{
+  label: "Profile link",
+  value: (person) => `https://example.com/${person.user.name}`,
+  width: 20,
+}
+```
+
+Most of the time, it is a common need so package supports function values. With functions you can transform value according to your need without modifying JSON file or object.
+
+However, function must take only one parameter which represents single object from your data array. If you have existing function you can also use that:
+
+```javascript
+function generateLink(person) {
+  return `https://example.com/${person.user.name}`
+}
+
+...
+
+{
+  label: "Profile link",
+  value: generateLink,
+  width: 20,
+}
+```
+
+### Style
 
 If you want to give more style to your columns [check these files](https://github.com/Rustam-Kirgizbaev/json2sheet/tree/main/src/interfaces)!
 Currently package only supports `font` and `alignment` in column style!
