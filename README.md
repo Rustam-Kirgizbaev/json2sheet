@@ -6,6 +6,10 @@ json2sheet is a utility package to convert json objects to simple excel sheets i
 
 - [Installation](#installation)
 - [Usage](#usage)
+  - [File Buffer](#file-buffer)
+  - [Excel File](#excel-file)
+  - [Function Values](#function-values)
+  - [Style](#style)
 - [Contributing](#contributing)
 
 ## Installation
